@@ -1,0 +1,25 @@
+name: FunkySubastas
+version: '${version}'
+main: lat.funkypunky.subastas.FunkySubastas
+api-version: '26.1'
+description: Casa de subastas de FUNKY PUNKY MC (precio fijo, buzón, comisiones que salen de la economía).
+authors: [SAULPLAY112]
+softdepend: [Vault, Essentials]
+
+# El servidor descarga el driver de SQLite de Maven Central la primera vez (si no lo trae ya).
+libraries:
+  - org.xerial:sqlite-jdbc:3.46.1.0
+
+commands:
+  subasta:
+    description: Casa de subastas.
+    usage: /subasta [vender|buzon|mias|buscar|ayuda]
+    aliases: [ah, subastas]
+
+permissions:
+  funkysubastas.usar:
+    description: Abrir la subasta, publicar, comprar y recoger del buzón.
+    default: true
+  funkysubastas.admin:
+    description: Quitar publicaciones, recargar el config, ver info y devolver todo (fin de temporada).
+    default: op

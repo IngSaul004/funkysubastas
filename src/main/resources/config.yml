@@ -1,0 +1,146 @@
+# ==========================================================
+#  FunkySubastas - configuración
+#  Cambios: /subasta recargar  (no hace falta reiniciar)
+#  Colores: solo códigos & (Bedrock no tiene hex).
+# ==========================================================
+
+# Publicaciones activas que puede tener cada jugador al mismo tiempo.
+# Igual para todos: los rangos son solo cosméticos (regla de Mojang).
+limite-publicaciones: 3
+
+# Horas que dura una publicación. Al vencer, el objeto va al buzón del vendedor.
+duracion-horas: 48
+
+# Comisiones. Este dinero se DESTRUYE (sumidero de la economía, ver el presupuesto).
+comision-publicar: 10        # se cobra al publicar y no se devuelve
+porcentaje-venta: 5          # % del precio que se descuenta al vendedor cuando vende
+
+# Límites de precio (evitan errores de dedo como 100000000).
+precio-minimo: 1
+precio-maximo: 1000000
+
+# Mundos donde la subasta NO funciona. El lobby tiene inventario aparte:
+# si se permite ahí, los objetos pasarían de un inventario al otro.
+mundos-bloqueados:
+  - lobby
+
+# No dejar publicar en creativo ni espectador (evita vender objetos de creativo).
+bloquear-creativo: true
+
+# Objetos que no se pueden vender (nombres de Material de Paper).
+objetos-prohibidos:
+  - BEDROCK
+  - BARRIER
+  - COMMAND_BLOCK
+  - CHAIN_COMMAND_BLOCK
+  - REPEATING_COMMAND_BLOCK
+  - COMMAND_BLOCK_MINECART
+  - STRUCTURE_BLOCK
+  - STRUCTURE_VOID
+  - JIGSAW
+  - LIGHT
+  - DEBUG_STICK
+  - KNOWLEDGE_BOOK
+  - SPAWNER
+  - TRIAL_SPAWNER
+  - VAULT
+  - END_PORTAL_FRAME
+  - REINFORCED_DEEPSLATE
+  - BUDDING_AMETHYST
+
+# Cada cuántos segundos se revisan las publicaciones vencidas.
+revisar-vencidas-segundos: 60
+
+# Zona horaria del registro (plugins/FunkySubastas/registro.log).
+zona-horaria: America/Mexico_City
+
+# ----------------------------------------------------------
+#  Textos. {algo} se reemplaza solo. "prefijo" va antes de los mensajes del chat.
+# ----------------------------------------------------------
+mensajes:
+  prefijo: "&d&lSUBASTA &8» &7"
+
+  # Chat
+  mundo-bloqueado: "&cLa subasta no funciona aquí. Ve al survival."
+  creativo: "&cNo puedes publicar en creativo ni en espectador."
+  mano-vacia: "&cToma en la mano el objeto que quieres vender."
+  prohibido: "&cEse objeto no se puede vender en la subasta."
+  precio-invalido: "&cPrecio inválido. Ejemplo: &f/subasta vender 250 &co &f/subasta vender 1.5k"
+  precio-rango: "&cEl precio debe estar entre &f{min} &cy &f{max}&c."
+  limite: "&cYa tienes &f{limite} &cpublicaciones activas. Cancela una con &f/subasta mias&c."
+  sin-dinero-comision: "&cPublicar cuesta &f{comision}&c y no te alcanza."
+  publicado: "&aPublicaste &f{objeto} &apor &6{precio}&a. Comisión cobrada: &f{comision}&a. Dura &f{horas}h&a. &8(#{id})"
+  error: "&cAlgo salió mal y no se hizo ningún cambio. Avisa al staff."
+  ya-vendida: "&cEsa publicación ya no está disponible."
+  vencida: "&cEsa publicación ya venció."
+  propia: "&cNo puedes comprar tu propia publicación. Cancélala en &f/subasta mias&c."
+  sin-dinero: "&cTe faltan &f{falta} &cpara comprar esto."
+  comprado: "&aCompraste &f{objeto} &apor &6{precio}&a."
+  vendido: "&a¡Vendiste &f{objeto} &aa &f{comprador}&a! Recibiste &6{pago} &7(comisión {comisionventa})."
+  vendido-aviso: "&aMientras no estabas vendiste &f{objeto} &aa &f{comprador} &ay recibiste &6{pago}&a."
+  no-es-tuya: "&cEsa publicación no es tuya o ya no existe."
+  cancelada: "&eCancelaste la publicación de &f{objeto}&e. La comisión no se devuelve."
+  al-buzon: "&eNo te cupo &f{objeto}&e: quedó en tu buzón (&f/subasta buzon&e)."
+  buzon-lleno-inventario: "&cHaz espacio en tu inventario para recoger esto."
+  recogido: "&aRecogiste &f{objeto}&a."
+  vencio: "&eTu publicación de &f{objeto} &evenció y quedó en tu buzón (&f/subasta buzon&e)."
+  aviso-buzon: "&eTienes &f{cantidad} &eobjeto(s) en tu buzón de la subasta: &f/subasta buzon"
+  quitada-staff: "&cEl staff retiró tu publicación de &f{objeto}&c. Quedó en tu buzón."
+  staff-quitada: "&aPublicación #{id} retirada; el objeto quedó en el buzón de &f{vendedor}&a."
+  recargado: "&aConfig recargado."
+  devolver-confirmar: "&cEsto regresa TODAS las publicaciones a los buzones. Escribe &f/subasta devolver-todo confirmar"
+  devuelto-todo: "&aSe devolvieron &f{cantidad} &apublicaciones a los buzones."
+  temporada: "&eFin de temporada: tu publicación de &f{objeto} &equedó en tu buzón."
+  solo-jugadores: "&cEste comando solo se usa dentro del juego."
+  sin-permiso: "&cNo tienes permiso."
+  buscar-uso: "&cUso: &f/subasta buscar <texto> &7(nombre del objeto en inglés, nombre personalizado o vendedor)"
+  info: "&7Activas: &f{activas} &8| &7En buzones: &f{buzon} &8| &7Versión &f{version}"
+  ayuda:
+    - "&d&l✦ SUBASTA FUNKY PUNKY ✦"
+    - "&f/subasta &7- abrir la subasta"
+    - "&f/subasta vender <precio> &7- vende lo que tienes en la mano"
+    - "&f/subasta mias &7- tus publicaciones (cancelar)"
+    - "&f/subasta buzon &7- recoger lo vencido o lo que no te cupo"
+    - "&f/subasta buscar <texto> &7- filtrar por nombre o vendedor"
+    - "&7Publicar cuesta &f{comision}&7. Al vender se descuenta el &f{porcentaje}%&7."
+    - "&7Máximo &f{limite} &7publicaciones a la vez. Duran &f{horas}h&7."
+  ayuda-admin:
+    - "&c/subasta quitar <id> &7- retirar una publicación (va al buzón del dueño)"
+    - "&c/subasta info &7- cuántas hay"
+    - "&c/subasta recargar &7- releer el config"
+    - "&c/subasta devolver-todo confirmar &7- fin de temporada"
+
+  # Menús
+  titulo-principal: "&5&lSubasta &8(página {pagina}/{paginas})"
+  titulo-mias: "&5&lMis publicaciones"
+  titulo-buzon: "&5&lBuzón &8(página {pagina}/{paginas})"
+  titulo-confirmar: "&5&l¿Comprar?"
+  lore-separador: "&8━━━━━━━━━━━━"   # sin &m: Bedrock no tiene tachado
+  lore-precio: "&7Precio: &6{precio}"
+  lore-vendedor: "&7Vendedor: &f{vendedor}"
+  lore-expira: "&7Vence en: &f{tiempo}"
+  lore-id: "&8#{id}"
+  lore-comprar: "&eClic para comprar"
+  lore-staff: "&cShift + clic derecho: retirar (staff)"
+  lore-cancelar: "&cClic para cancelar"
+  lore-recoger: "&aClic para recoger"
+  lore-motivo: "&7Motivo: &f{motivo}"
+  boton-anterior: "&fPágina anterior"
+  boton-siguiente: "&fPágina siguiente"
+  boton-orden-nuevo: "&fOrden: &dmás nuevos"
+  boton-orden-barato: "&fOrden: &dmás baratos"
+  boton-orden-lore: "&7Clic para cambiar"
+  boton-buzon: "&fBuzón &8({cantidad})"
+  boton-mias: "&fMis publicaciones &8({cantidad}/{limite})"
+  boton-ayuda: "&fCómo vender"
+  boton-ayuda-lore: "&7Toma el objeto y escribe &f/subasta vender <precio>"
+  boton-filtro: "&7Filtro: &f{filtro}"
+  boton-volver: "&fVolver"
+  boton-confirmar: "&a&lComprar por {precio}"
+  boton-cancelar: "&c&lCancelar"
+  vacio: "&7No hay nada aquí."
+  motivo-vencida: "vencida"
+  motivo-cancelada: "cancelada"
+  motivo-inventario: "inventario lleno"
+  motivo-staff: "retirada por el staff"
+  motivo-temporada: "fin de temporada"
